@@ -78,8 +78,12 @@ Write-Output "Resolving ${domainName} by querying $dnsServer ..." | Out-File -Fi
 Write-Output "*********************************************************************"
 Write-Output "*********************************************************************" | Out-File -FilePath $logFile -Append
 
+# Variables for the sleep interval and duration
+$sleepSeconds = 20  # Wait for 20 seconds before running the command again
+$durationMinutes = 15  # Run the command for a period of 15 minutes
+
 # Run the command every 20 seconds for a period of 15 minutes
-$endTime = (Get-Date).AddMinutes(15) # Updated to run for 15 minutes
+$endTime = (Get-Date).AddMinutes($durationMinutes)
 while ((Get-Date) -lt $endTime) {
     try {
         # Clear DNS cache
@@ -103,8 +107,8 @@ while ((Get-Date) -lt $endTime) {
             $ipAddressCounts[$ipAddress] = 1
         }
 
-        # Wait for 20 seconds before running the command again
-        Start-Sleep -Seconds 20 # Default: 20
+        # Wait for the specified number of seconds before running the command again
+        Start-Sleep -Seconds $sleepSeconds
     }
     catch {
         Write-Output "An error occurred: $_" | Out-File -FilePath $logFile -Append
