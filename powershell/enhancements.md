@@ -1,4 +1,4 @@
-Some future enhancements could be:
+### Some future enhancements could be: 
 
 - Adding IPv6 support
 - Improving the logging capabilities
