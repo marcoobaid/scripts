@@ -48,9 +48,9 @@ function Get-DnsServerSelection {
     while ($true) {
         Clear-Host
         Write-Host ""
-        Write-Host "******************************************************************************"
+        Write-Host "*************************************************************************"
         Write-Host "${computerName} active interface is currently set to $setDNS for DNS"
-        Write-Host "******************************************************************************"
+        Write-Host "*************************************************************************"
         Write-Host "Please select the DNS server to query ${domainName}:"
         Write-Host "1. Cloudflare 1.1.1.1"
         Write-Host "2. Google DNS 8.8.8.8"
@@ -59,7 +59,7 @@ function Get-DnsServerSelection {
         Write-Host "5. Current interface setting"
         Write-Host "6. Set Interval and Duration parameters (Current: ${sleepSeconds}s interval, ${durationMinutes}m duration)"
         Write-Host "7. Exit"
-        Write-Host "******************************************************************************"
+        Write-Host "*************************************************************************"
         $selection = Read-Host "Enter the number of your selection"
         switch ($selection) {
             1 { Clear-Host; return "1.1.1.1".Trim() }
@@ -139,7 +139,7 @@ Write-Output $message.Replace("  ", " ")
 Write-Output "Test Parameters: ${sleepSeconds}s interval for ${durationMinutes}m duration"
 Write-Output "Test Parameters: ${sleepSeconds}s interval for ${durationMinutes}m duration" | Out-File -FilePath $logFile -Append
 Write-Output "******************************************************************************"
-Write-Output "******************************************************************************" | Out-File -FilePath $logFile -Append
+Write-Output "*************************************************************************" | Out-File -FilePath $logFile -Append
 
 # Run the command for the specified duration at the specified interval
 $endTime = (Get-Date).AddMinutes($durationMinutes)
@@ -176,16 +176,16 @@ while ((Get-Date) -lt $endTime) {
 }
 
 # Print the counts of unique IP addresses
-Write-Output "******************************************************************************"
-Write-Output "******************************************************************************" | Out-File -FilePath $logFile -Append
+Write-Output "*************************************************************************"
+Write-Output "*************************************************************************" | Out-File -FilePath $logFile -Append
 Write-Output "Summary of DNS Resolutions by unique resolved IPs:" | Out-File -FilePath $logFile -Append
 Write-Output "Summary of DNS Resolutions by unique resolved IPs:"
 foreach ($ipAddress in $ipAddressCounts.Keys) {
     Write-Output "${ipAddress}: $($ipAddressCounts[$ipAddress])" | Out-File -FilePath $logFile -Append
     Write-Output "${ipAddress}: $($ipAddressCounts[$ipAddress])"
 }
-Write-Output "******************************************************************************"
-Write-Output "******************************************************************************" | Out-File -FilePath $logFile -Append
+Write-Output "*************************************************************************"
+Write-Output "*************************************************************************" | Out-File -FilePath $logFile -Append
 Write-Output "Script completed." | Out-File -FilePath $logFile -Append
 Write-Output "Script completed."
 Write-Output ""
