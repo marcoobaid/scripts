@@ -1,5 +1,5 @@
 ## Overall Assessment
-This is a well-structured PowerShell script for DNS resolution testing. It resolves a specific domain name (`athenanet.athenahealth.com`) using a user-selected DNS server, then counts how many times each unique IP address is returned over a period of time.
+This is a PowerShell script for DNS resolution testing. It resolves a specific domain name (`example.com`) using a user-selected DNS server, then counts how many times each unique IP address is returned over a period of time.
 ## Key Components
 
 1. **Documentation**: The script has thorough header documentation with synopsis, description, author information, license, and usage examples.
